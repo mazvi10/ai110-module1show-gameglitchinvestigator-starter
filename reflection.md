@@ -85,9 +85,11 @@ Document at least 3 bugs you found. Add rows as needed.
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 
     Creating pytest scripts in order to make sure functions are functional individually
+    
 - What is one thing you would do differently next time you work with AI on a coding task?
 
   I think I will be more clear on what bug i want to focus on at a time because the AI tends to want to fix all the bugs of the code, which can be overwhelming to comb through
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
 
   It has changed how I interact with AI in the sense that I can use to first understand code I am not sure about then use it to fix only the bugs I am focused on. It has also helped me start using to do all the tedious coding tasks like refactoring and creating test cases

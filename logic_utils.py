@@ -50,8 +50,8 @@ def update_score(current_score: int, outcome: str, attempt_number: int):#FIX: Re
     
     """Update score based on outcome and attempt number."""
     if outcome == "Win":
-        # attempt_number is 1-based, so a first-guess win gives 90.
-        points = 100 - 10 * attempt_number
+        # FIX, allows first guess to get a 100
+        points = 100 - 10 * (attempt_number - 1) 
         if points < 10:
             points = 10
         return current_score + points
