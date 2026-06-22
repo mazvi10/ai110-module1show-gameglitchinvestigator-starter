@@ -42,6 +42,7 @@ Document at least 3 bugs you found. Add rows as needed.
   One AI suggestion that was removing the unnecessary stringifying of the even attempts. I verified this by looking through the code and seeing how it provided erratic results that caused glitches in the game. The AI's ultimate suggestion was removing that branch and always using the integer, which I did.
 
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+
   One AI suggestion was how giving how an invalid input cost an attempt, however, I do not see that as an error as the instructions are clear to the user thus entering strings would be a willful attempt that should count as an attempt, even if it was an invalid input. 
 
 
@@ -70,6 +71,7 @@ Document at least 3 bugs you found. Add rows as needed.
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+
   I would say that Streamlit is a way to create a python web page that reruns all the python code, from top to bottom, whenever a change is made. However, session states allow specific variables to keep their values or progress whenever a rerun is done, whilst all the other variables are reset.
 
 ---
@@ -78,8 +80,11 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
-  Creating pytest scripts in order to make sure functions are functional individually
+
+    Creating pytest scripts in order to make sure functions are functional individually
 - What is one thing you would do differently next time you work with AI on a coding task?
+
   I think I will be more clear on what bug i want to focus on at a time because the AI tends to want to fix all the bugs of the code, which can be overwhelming to comb through
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
   It has changed how I interact with AI in the sense that I can use to first understand code I am not sure about then use it to fix only the bugs I am focused on. It has also helped me start using to do all the tedious coding tasks like refactoring and creating test cases
