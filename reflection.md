@@ -4,7 +4,10 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ## 1. What was broken when you started?
 
-- What did the game look like the first time you ran it?a
+- What did the game look like the first time you ran it?
+
+  It ran relatively alright and looked quite polished but some of the functionality was shaky and mixed up, so it definitely was not ready to deploy as claimed
+
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 

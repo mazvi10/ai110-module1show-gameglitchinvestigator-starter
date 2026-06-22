@@ -1,6 +1,11 @@
 import pytest
 
-from logic_utils import check_guess, get_range_for_difficulty, parse_guess
+from logic_utils import (
+    check_guess,
+    get_range_for_difficulty,
+    parse_guess,
+    update_score,
+)
 
 
 def test_correct_guess_wins():
@@ -97,3 +102,52 @@ def test_parse_guess_rejects_non_numeric_input():
     assert ok is False
     assert value is None
     assert err == "That is not a number."
+
+
+def test_first_guess_win_awards_ninety():
+    # attempt_number is 1-based, so winning on the first guess gives 90.
+    assert update_score(0, "Win", 1) == 90
+
+
+@pytest.mark.parametrize(
+    "attempt_number, expected_points",
+    [
+        (1, 90),
+        (2, 80),
+        (5, 50),
+        (9, 10),
+    ],
+)
+def test_win_points_decrease_with_more_attempts(attempt_number, expected_points):
+    # Each extra attempt costs 10 points off a fresh score.
+    assert update_score(0, "Win", attempt_number) == expected_points
+
+
+def test_win_points_are_floored_at_ten():
+    # A very late win should never award less than 10 points.
+    assert update_score(0, "Win", 20) == 10
+
+
+def test_win_adds_to_existing_score():
+    # Points are added on top of the current score, not replacing it.
+    assert update_score(45, "Win", 1) == 135
+
+
+@pytest.mark.parametrize("attempt_number", [1, 2, 3, 4])
+def test_too_high_always_costs_five(attempt_number):
+    # Regression guard: a wrong guess must never depend on attempt parity.
+    assert update_score(50, "Too High", attempt_number) == 45
+
+
+@pytest.mark.parametrize("attempt_number", [1, 2, 3, 4])
+def test_too_low_always_costs_five(attempt_number):
+    assert update_score(50, "Too Low", attempt_number) == 45
+
+
+def test_wrong_guesses_are_penalized_equally():
+    # Too High and Too Low are equivalent outcomes and must score the same.
+    assert update_score(50, "Too High", 2) == update_score(50, "Too Low", 2)
+
+
+def test_unknown_outcome_leaves_score_unchanged():
+    assert update_score(50, "Unknown", 1) == 50
